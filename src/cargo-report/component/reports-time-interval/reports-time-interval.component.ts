@@ -1,15 +1,33 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
+import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
 
 @Component({
   selector: 'app-reports-time-interval',
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule],
+  imports: [MatFormFieldModule, MatDatepickerModule, MatDatepickerModule, ReactiveFormsModule, MatButton, MatTooltip],
   providers: [provideNativeDateAdapter()],
   templateUrl: './reports-time-interval.component.html',
   styleUrl: './reports-time-interval.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsTimeIntervalComponent {}
+export class ReportsTimeIntervalComponent {
+  private reportUrlParamsDataService = inject(ReportUrlParamsDataService);
+
+  protected timeIntervalForm = new FormGroup({
+    from: new FormControl<Date | null>(null),
+    until: new FormControl<Date | null>(null),
+  });
+
+  protected submitInterval() {
+    const { from, until } = this.timeIntervalForm.value;
+    this.reportUrlParamsDataService.changeTimeInterval({
+      from: from?.toISOString() ?? null,
+      until: until?.toISOString() ?? null,
+    });
+  }
+}

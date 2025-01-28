@@ -1,13 +1,18 @@
-<mat-form-field>
-  <mat-label>Interval start</mat-label>
-  <input matInput [matDatepicker]="from">
-  <mat-datepicker-toggle matIconSuffix [for]="from"></mat-datepicker-toggle>
-  <mat-datepicker #from></mat-datepicker>
-</mat-form-field>
+<form class="time-interval-form" [formGroup]="timeIntervalForm">
+  <mat-form-field subscriptSizing="dynamic">
+    <mat-label>Filter by date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate formControlName="from" placeholder="From">
+      <input matEndDate formControlName="until" placeholder="Until">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <button
+    (click)="submitInterval()"
+    mat-raised-button
+    disabledInteractive
+    matTooltipDisabled
+    matTooltip="Choose an interval">Apply</button>
+</form>
 
-<mat-form-field>
-  <mat-label>Interval end</mat-label>
-  <input matInput [matDatepicker]="until">
-  <mat-datepicker-toggle matIconSuffix [for]="until"></mat-datepicker-toggle>
-  <mat-datepicker #until></mat-datepicker>
-</mat-form-field>

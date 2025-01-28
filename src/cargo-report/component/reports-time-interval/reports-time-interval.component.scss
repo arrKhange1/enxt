@@ -1,0 +1,8 @@
+.time-interval-form {
+  display: flex;
+  gap: 1em;
+
+  & > button {
+    align-self: center;
+  }
+}
