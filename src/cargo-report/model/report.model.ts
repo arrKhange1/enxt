@@ -45,3 +45,12 @@ export interface ReportResponse {
   fwb_data: ReportData[];
   totalRecords: number;
 }
+
+export interface ReportUrlParams {
+  sortOrder?: 'asc' | 'desc';
+  sortName?: 'prefix' | 'serial' | 'origin' | 'destination' | 'act_weight' | 'unit';
+  pageNumber: number;
+  pageSize: number;
+  from: string;
+  until: string;
+}
