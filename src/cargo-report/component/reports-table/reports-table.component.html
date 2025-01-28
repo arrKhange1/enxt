@@ -1,29 +1,29 @@
 <table mat-table [dataSource]="reportData()" class="reports-table">
   <ng-container matColumnDef="prefix">
     <th mat-header-cell *matHeaderCellDef>Prefix</th>
-    <td mat-cell *matCellDef="let fwbDetail"> {{fwbDetail.AWB_Prefix}} </td>
+    <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Prefix}} </td>
   </ng-container>
   <ng-container matColumnDef="serial">
     <th mat-header-cell *matHeaderCellDef>Serial Nr</th>
-    <td mat-cell *matCellDef="let fwbDetail"> {{fwbDetail.AWB_Serial}} </td>
+    <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Serial}} </td>
   </ng-container>
   <ng-container matColumnDef="origin">
     <th mat-header-cell *matHeaderCellDef>Origin</th>
-    <td mat-cell *matCellDef="let fwbDetail"> {{fwbDetail.AWB_Origin}} </td>
+    <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Origin}} </td>
   </ng-container>
   <ng-container matColumnDef="destination">
     <th mat-header-cell *matHeaderCellDef>Destination</th>
-    <td mat-cell *matCellDef="let fwbDetail"> {{fwbDetail.AWB_Destination}} </td>
+    <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Destination}} </td>
   </ng-container>
   <ng-container matColumnDef="weight">
     <th mat-header-cell *matHeaderCellDef>Actual Weight</th>
-    <td mat-cell *matCellDef="let fwbDetail"> {{fwbDetail.Weight_Actual}} </td>
+    <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Actual}} </td>
   </ng-container>
   <ng-container matColumnDef="unit">
     <th mat-header-cell *matHeaderCellDef>Unit</th>
-    <td mat-cell *matCellDef="let fwbDetail"> {{fwbDetail.Weight_Identifier}} </td>
+    <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Identifier}} </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let fwbDetail; columns: columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let fwbRow; columns: columnsToDisplay"></tr>
 </table>

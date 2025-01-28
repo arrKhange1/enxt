@@ -4,10 +4,14 @@ import { ReportUrlParams } from '../model/report.model';
 
 @Injectable()
 export class ReportUrlParamsDataService {
-  public reportUrlParams$ = new BehaviorSubject<ReportUrlParams>({
+  private _reportUrlParams$ = new BehaviorSubject<ReportUrlParams>({
+    sortOrder: null,
+    sortName: null,
     pageNumber: 1,
     pageSize: 100,
-    from: '',
-    until: '',
+    from: null,
+    until: null,
   });
+
+  public reportUrlParams$ = this._reportUrlParams$.asObservable();
 }

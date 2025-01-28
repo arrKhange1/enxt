@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, shareReplay } from 'rxjs';
 import { ReportResponse } from '../../cargo-report/model/report.model';
 
 @Injectable({
@@ -8,9 +8,12 @@ import { ReportResponse } from '../../cargo-report/model/report.model';
 })
 export class ReportApiService {
   private baseUrl = 'https://enxtlinux.enxt.solutions:8013/api/Messages/FWBReports';
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
-  public getReport(): Observable<ReportResponse> {
-    return this.http.get<ReportResponse>(`${this.baseUrl}?pageNumber=1&pageSize=100&from=&until=`);
+  public getReport(params: HttpParams): Observable<ReportResponse> {
+    console.log(params.keys());
+    return this.http
+      .get<ReportResponse>(`${this.baseUrl}`, { params })
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 }

@@ -47,10 +47,10 @@ export interface ReportResponse {
 }
 
 export interface ReportUrlParams {
-  sortOrder?: 'asc' | 'desc';
-  sortName?: 'prefix' | 'serial' | 'origin' | 'destination' | 'act_weight' | 'unit';
+  sortOrder: 'asc' | 'desc' | null;
+  sortName: 'prefix' | 'serial' | 'origin' | 'destination' | 'act_weight' | 'unit' | null;
   pageNumber: number;
   pageSize: number;
-  from: string;
-  until: string;
+  from: string | null;
+  until: string | null;
 }
