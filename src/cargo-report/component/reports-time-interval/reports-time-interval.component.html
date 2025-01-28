@@ -1,6 +1,13 @@
 <mat-form-field>
-  <mat-label>Choose a date</mat-label>
-  <input matInput [matDatepicker]="picker">
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
+  <mat-label>Interval start</mat-label>
+  <input matInput [matDatepicker]="from">
+  <mat-datepicker-toggle matIconSuffix [for]="from"></mat-datepicker-toggle>
+  <mat-datepicker #from></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Interval end</mat-label>
+  <input matInput [matDatepicker]="until">
+  <mat-datepicker-toggle matIconSuffix [for]="until"></mat-datepicker-toggle>
+  <mat-datepicker #until></mat-datepicker>
 </mat-form-field>
