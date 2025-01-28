@@ -12,8 +12,6 @@ export class ReportApiService {
 
   public getReport(params: HttpParams): Observable<ReportResponse> {
     console.log(params.keys());
-    return this.http
-      .get<ReportResponse>(`${this.baseUrl}`, { params })
-      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+    return this.http.get<ReportResponse>(`${this.baseUrl}`, { params });
   }
 }

@@ -3,10 +3,11 @@ import { ReportsTableComponent } from '../../component/reports-table/reports-tab
 import { MatInput } from '@angular/material/input';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
+import { ReportsPaginatorComponent } from '../../component/reports-paginator/reports-paginator.component';
 
 @Component({
   selector: 'app-cargo-report',
-  imports: [ReportsTableComponent, MatInput],
+  imports: [ReportsTableComponent, MatInput, ReportsPaginatorComponent],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
   providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService],

@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { ReportUrlParamsDataService } from '../store/report-url-params.data.service';
-import { map, Observable, switchMap, tap } from 'rxjs';
+import { map, Observable, shareReplay, switchMap } from 'rxjs';
 import { ReportResponse, ReportUrlParams } from '../model/report.model';
 import { HttpParams } from '@angular/common/http';
 import { ReportApiService } from '../../shared/service/report.api.service';
@@ -9,6 +9,11 @@ import { ReportApiService } from '../../shared/service/report.api.service';
 export class ReportUrlParamsBuilderService {
   private urlParamsDataService = inject(ReportUrlParamsDataService);
   private reportApiService = inject(ReportApiService);
+  private parameterizedReport$ = this.urlParamsDataService.reportUrlParams$.pipe(
+    map((reportUrlParams) => this.buildUrlParams(reportUrlParams)),
+    switchMap((params) => this.reportApiService.getReport(params)),
+    shareReplay({ bufferSize: 1, refCount: true }),
+  );
 
   private buildUrlParams(reportUrlParams: ReportUrlParams): HttpParams {
     let httpParams = new HttpParams();
@@ -19,18 +24,11 @@ export class ReportUrlParamsBuilderService {
     return httpParams;
   }
 
-  private getParameterizedReport(): Observable<ReportResponse> {
-    return this.urlParamsDataService.reportUrlParams$.pipe(
-      map((reportUrlParams) => this.buildUrlParams(reportUrlParams)),
-      switchMap((params) => this.reportApiService.getReport(params)),
-    );
-  }
-
   public getParameterizedFwbData(): Observable<ReportResponse['fwb_data']> {
-    return this.getParameterizedReport().pipe(map((res: ReportResponse) => res.fwb_data));
+    return this.parameterizedReport$.pipe(map((res: ReportResponse) => res.fwb_data));
   }
 
   public getParameterizedTotalRecords(): Observable<ReportResponse['totalRecords']> {
-    return this.getParameterizedReport().pipe(map((res: ReportResponse) => res.totalRecords));
+    return this.parameterizedReport$.pipe(map((res: ReportResponse) => res.totalRecords));
   }
 }
