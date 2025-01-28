@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -32,6 +32,7 @@ import { ReportUrlParamsBuilderService } from '../../service/report-url-params-b
   ],
   templateUrl: './reports-table.component.html',
   styleUrl: './reports-table.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsTableComponent {
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);

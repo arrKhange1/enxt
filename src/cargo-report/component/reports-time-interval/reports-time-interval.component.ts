@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -10,5 +10,6 @@ import { MatInputModule } from '@angular/material/input';
   providers: [provideNativeDateAdapter()],
   templateUrl: './reports-time-interval.component.html',
   styleUrl: './reports-time-interval.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportsTimeIntervalComponent {}

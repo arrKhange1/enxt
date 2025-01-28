@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ReportsTableComponent } from '../../component/reports-table/reports-table.component';
 import { MatInput } from '@angular/material/input';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
@@ -12,5 +12,6 @@ import { ReportsTimeIntervalComponent } from '../../component/reports-time-inter
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
   providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CargoReportComponent {}
