@@ -6,6 +6,7 @@
                  [pageSize]="urlParams?.pageSize"
                  [pageIndex]="urlParams ? urlParams.pageNumber-1 : 0"
                  [pageSizeOptions]="[50,100]"
+                 (page)="onPaginationChange($event)"
                  aria-label="Select page">
   </mat-paginator>
 }

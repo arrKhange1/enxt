@@ -46,11 +46,19 @@ export interface ReportResponse {
   totalRecords: number;
 }
 
-export interface ReportUrlParams {
-  sortOrder: 'asc' | 'desc' | null;
-  sortName: 'prefix' | 'serial' | 'origin' | 'destination' | 'act_weight' | 'unit' | null;
+export interface ReportPageUrlParams {
   pageNumber: number;
   pageSize: number;
+}
+
+export interface ReportTimeUrlParams {
   from: string | null;
   until: string | null;
 }
+
+export interface ReportSortUrlParams {
+  sortOrder: 'asc' | 'desc' | null;
+  sortName: 'prefix' | 'serial' | 'origin' | 'destination' | 'act_weight' | 'unit' | null;
+}
+
+export type ReportUrlParams = ReportPageUrlParams & ReportTimeUrlParams & ReportSortUrlParams;
