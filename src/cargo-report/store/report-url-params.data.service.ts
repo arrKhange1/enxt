@@ -7,7 +7,7 @@ export class ReportUrlParamsDataService {
   private _reportUrlParams$ = new BehaviorSubject<ReportUrlParams>({
     sortOrder: null,
     sortName: null,
-    pageNumber: 1,
+    pageNumber: 0,
     pageSize: 100,
     from: null,
     until: null,
