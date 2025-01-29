@@ -11,8 +11,9 @@
 }
 
 .row__more-info {
-  display: flex;
-  gap: 1em;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 1fr 1fr;
   padding: 1em;
 }
 

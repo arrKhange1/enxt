@@ -1,12 +1,18 @@
 .info-card {
-  width: fit-content;
+  height: 100%;
 }
 
 .info-list {
   padding: 0 0.5em;
+  width: fit-content;
   display: grid;
-  grid-column-gap: 0.5em;
-  grid-template-columns: auto auto;
+  grid-column-gap: 2em;
+  grid-template-columns: auto auto auto;
+
+  @media (max-width: 860px) {
+    grid-template-columns: auto auto;
+  }
+
 }
 
 :host ::ng-deep .info-list-item {
