@@ -1,6 +1,6 @@
-<table mat-table [dataSource]="reportData()" class="reports-table">
+<table mat-table matSort (matSortChange)="sortChange($event)" [dataSource]="reportData()" class="reports-table">
   <ng-container matColumnDef="prefix">
-    <th mat-header-cell *matHeaderCellDef>Prefix</th>
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>Prefix</th>
     <td mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Prefix}} </td>
   </ng-container>
   <ng-container matColumnDef="serial">
