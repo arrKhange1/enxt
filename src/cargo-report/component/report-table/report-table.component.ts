@@ -3,7 +3,7 @@ import { MatTableModule } from '@angular/material/table';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
 import { MatSortModule, Sort } from '@angular/material/sort';
-import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
+import { ReportSortService } from '../../service/report-sort.service';
 import { ReportSortUrlParams } from '../../model/report.model';
 
 @Component({
@@ -14,23 +14,14 @@ import { ReportSortUrlParams } from '../../model/report.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportTableComponent {
+  private reportSortService = inject(ReportSortService);
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   public reportData = toSignal(this.reportParamsBuilderService.getParameterizedFwbData(), { initialValue: [] });
   public columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
 
-  private reportUrlDataService = inject(ReportUrlParamsDataService);
-  sortChange({ active, direction }: Sort) {
-    console.log(active, direction);
-    if (!direction) {
-      this.reportUrlDataService.changeSortParams({
-        sortOrder: null,
-        sortName: null,
-      });
-    } else {
-      this.reportUrlDataService.changeSortParams({
-        sortOrder: direction,
-        sortName: active as ReportSortUrlParams['sortName'],
-      });
-    }
+  protected sortChange({ active, direction }: Sort): void {
+    const changedSortOrder = direction === '' ? null : direction;
+    const changedSortName = active as ReportSortUrlParams['sortName'];
+    this.reportSortService.sortReport({ sortName: changedSortName, sortOrder: changedSortOrder });
   }
 }
