@@ -1,5 +1,11 @@
+@use '@angular/material' as mat;
+
 :host {
   display: block;
   min-height: 0;
   overflow: auto;
+}
+
+.report-table__row[data-agent] {
+  background-color: var(--mat-sys-inverse-primary)
 }
