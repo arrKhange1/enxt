@@ -9,10 +9,18 @@ import { NgTemplateOutlet } from '@angular/common';
 import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
 import { FwbDetailCardComponent } from '../detail-cards/fwb-detail-card/fwb-detail-card.component';
 import { AgentDetailCardComponent } from '../detail-cards/agent-detail-card/agent-detail-card.component';
+import { ShipperDetailCardComponent } from '../detail-cards/shipper-detail-card/shipper-detail-card.component';
 
 @Component({
   selector: 'app-report-table',
-  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, FwbDetailCardComponent, AgentDetailCardComponent],
+  imports: [
+    MatTableModule,
+    MatSortModule,
+    NgTemplateOutlet,
+    FwbDetailCardComponent,
+    AgentDetailCardComponent,
+    ShipperDetailCardComponent,
+  ],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
