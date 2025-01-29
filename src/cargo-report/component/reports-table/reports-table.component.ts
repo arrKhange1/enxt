@@ -16,10 +16,11 @@ import { ReportSortUrlParams } from '../../model/report.model';
 export class ReportsTableComponent {
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   public reportData = toSignal(this.reportParamsBuilderService.getParameterizedFwbData(), { initialValue: [] });
-  public columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'weight', 'unit'];
+  public columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
 
   private reportUrlDataService = inject(ReportUrlParamsDataService);
   sortChange({ active, direction }: Sort) {
+    console.log(active, direction);
     if (!direction) {
       this.reportUrlDataService.changeSortParams({
         sortOrder: null,
