@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { MatCard, MatCardContent, MatCardHeader, MatCardModule, MatCardTitle } from '@angular/material/card';
-import { MatList, MatListItem, MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 import { ListItem } from '../../model/list-item';
 
 @Component({
@@ -12,4 +12,5 @@ import { ListItem } from '../../model/list-item';
 })
 export class CardWithListComponent {
   public data = input<ListItem[]>([]);
+  public title = input<string>('Card');
 }

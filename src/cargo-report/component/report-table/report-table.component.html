@@ -41,7 +41,10 @@
   <ng-template #rowContent let-fwbRow>
     @if (expandedRow === fwbRow) {
       <div class="row__more-info">
-        <app-fwb-detail-card [fwbDetails]="fwbRow.fWB_Details"  />
+        <app-fwb-detail-card [fwbDetails]="fwbRow.fWB_Details" />
+        @if (fwbRow.agent_Details) {
+          <app-agent-detail-card [agentDetails]="fwbRow.agent_Details" />
+        }
       </div>
     }
   </ng-template>

@@ -7,11 +7,12 @@ import { ReportSortService } from '../../service/report-sort.service';
 import { ReportData, ReportSortUrlParams } from '../../model/report.model';
 import { NgTemplateOutlet } from '@angular/common';
 import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
-import { FwbDetailCardComponent } from '../fwb-detail-card/fwb-detail-card.component';
+import { FwbDetailCardComponent } from '../detail-cards/fwb-detail-card/fwb-detail-card.component';
+import { AgentDetailCardComponent } from '../detail-cards/agent-detail-card/agent-detail-card.component';
 
 @Component({
   selector: 'app-report-table',
-  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, FwbDetailCardComponent],
+  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, FwbDetailCardComponent, AgentDetailCardComponent],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
