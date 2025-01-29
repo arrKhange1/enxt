@@ -5,15 +5,14 @@ import { ReportUrlParamsDataService } from '../../store/report-url-params.data.s
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-reports-paginator',
+  selector: 'app-report-paginator',
   imports: [MatPaginator, AsyncPipe],
-  templateUrl: './reports-paginator.component.html',
-  styleUrl: './reports-paginator.component.scss',
+  templateUrl: './report-paginator.component.html',
+  styleUrl: './report-paginator.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsPaginatorComponent {
+export class ReportPaginatorComponent {
   protected reportUrlParamsDataService = inject(ReportUrlParamsDataService);
-  // мб тут пайпу withlatestfrom pageSize, pageNumber + пересчет pageNumber если меняется total
   protected totalRecords$ = inject(ReportUrlParamsBuilderService).getParameterizedTotalRecords();
 
   protected onPaginationChange({ pageIndex, pageSize }: PageEvent) {

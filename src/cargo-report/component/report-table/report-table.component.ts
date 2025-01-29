@@ -7,13 +7,13 @@ import { ReportUrlParamsDataService } from '../../store/report-url-params.data.s
 import { ReportSortUrlParams } from '../../model/report.model';
 
 @Component({
-  selector: 'app-reports-table',
+  selector: 'app-report-table',
   imports: [MatTableModule, MatSortModule],
-  templateUrl: './reports-table.component.html',
-  styleUrl: './reports-table.component.scss',
+  templateUrl: './report-table.component.html',
+  styleUrl: './report-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ReportsTableComponent {
+export class ReportTableComponent {
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   public reportData = toSignal(this.reportParamsBuilderService.getParameterizedFwbData(), { initialValue: [] });
   public columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
