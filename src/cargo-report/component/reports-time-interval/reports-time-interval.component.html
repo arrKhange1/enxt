@@ -1,5 +1,5 @@
 <form class="time-interval-form" [formGroup]="timeIntervalForm">
-  <mat-form-field subscriptSizing="dynamic">
+  <mat-form-field class="time-interval-form__interval" subscriptSizing="dynamic">
     <mat-label>Filter by date range</mat-label>
     <mat-date-range-input [rangePicker]="picker">
       <input matStartDate formControlName="from" placeholder="From">
@@ -10,9 +10,8 @@
   </mat-form-field>
   <button
     (click)="submitInterval()"
+    [disabled]="timeIntervalForm.invalid || timeIntervalForm.untouched"
     mat-raised-button
-    disabledInteractive
-    matTooltipDisabled
     matTooltip="Choose an interval">Apply</button>
 </form>
 

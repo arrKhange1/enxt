@@ -6,10 +6,20 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
+import { map, pairwise, startWith } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-reports-time-interval',
-  imports: [MatFormFieldModule, MatDatepickerModule, MatDatepickerModule, ReactiveFormsModule, MatButton, MatTooltip],
+  imports: [
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatButton,
+    MatTooltip,
+    AsyncPipe,
+  ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './reports-time-interval.component.html',
   styleUrl: './reports-time-interval.component.scss',

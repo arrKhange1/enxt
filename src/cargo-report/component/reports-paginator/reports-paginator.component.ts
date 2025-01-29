@@ -13,6 +13,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class ReportsPaginatorComponent {
   protected reportUrlParamsDataService = inject(ReportUrlParamsDataService);
+  // мб тут пайпу withlatestfrom pageSize, pageNumber + пересчет pageNumber если меняется total
   protected totalRecords$ = inject(ReportUrlParamsBuilderService).getParameterizedTotalRecords();
 
   protected onPaginationChange({ pageIndex, pageSize }: PageEvent) {
