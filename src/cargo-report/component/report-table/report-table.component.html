@@ -1,26 +1,28 @@
+@let fwbDetailsConfig = reportFieldsConfig.fwbDetails;
+
 <mat-table class="report-table" matSort (matSortChange)="sortChange($event)" [dataSource]="reportData()">
   <ng-container matColumnDef="prefix">
-    <mat-header-cell  *matHeaderCellDef>Prefix</mat-header-cell>
+    <mat-header-cell  *matHeaderCellDef>{{ fwbDetailsConfig.prefix }}</mat-header-cell>
     <mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Prefix}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="serial">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>Serial Nr</mat-header-cell>
+    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.serial }}</mat-header-cell>
     <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Serial}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="origin">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>Origin</mat-header-cell>
+    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.origin }}</mat-header-cell>
     <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Origin}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="destination">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>Destination</mat-header-cell>
+    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.destination }}</mat-header-cell>
     <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Destination}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="act_weight">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>Actual Weight</mat-header-cell>
+    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.weight }}</mat-header-cell>
     <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Actual}} </mat-cell>
   </ng-container>
   <ng-container matColumnDef="unit">
-    <mat-header-cell mat-sort-header *matHeaderCellDef>Unit</mat-header-cell>
+    <mat-header-cell mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.weightId }}</mat-header-cell>
     <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Identifier}} </mat-cell>
   </ng-container>
 

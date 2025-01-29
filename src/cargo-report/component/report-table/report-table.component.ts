@@ -9,10 +9,11 @@ import { NgTemplateOutlet } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatRipple } from '@angular/material/core';
+import { REPORT_FIELDS_CONFIG } from '../../config/report-detail-fields.config';
 
 @Component({
   selector: 'app-report-table',
-  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, MatCardModule, MatListModule, MatRipple],
+  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, MatCardModule, MatListModule],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,6 +24,7 @@ export class ReportTableComponent {
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   protected reportData = toSignal(this.reportParamsBuilderService.getParameterizedFwbData(), { initialValue: [] });
   protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
+  protected reportFieldsConfig = REPORT_FIELDS_CONFIG;
   protected expandedRow: ReportData | null = null;
 
   protected expandRowContent(row: ReportData) {
