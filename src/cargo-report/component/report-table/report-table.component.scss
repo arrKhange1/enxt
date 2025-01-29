@@ -14,17 +14,3 @@
   padding: 1em;
 }
 
-.row__more-info-card {
-  width: fit-content;
-}
-
-.row__more-info-list {
-  padding: 0 0.5em;
-  display: grid;
-  grid-column-gap: 0.5em;
-  grid-template-columns: auto auto;
-}
-
-:host ::ng-deep .row__more-info-item {
-  padding: 0;
-}

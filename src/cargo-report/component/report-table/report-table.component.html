@@ -41,55 +41,7 @@
   <ng-template #rowContent let-fwbRow>
     @if (expandedRow === fwbRow) {
       <div class="row__more-info">
-        <mat-card class="row__more-info-card" appearance="outlined">
-          <mat-card-header>
-            <mat-card-title>FWB_Details</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <mat-list class="row__more-info-list" role="list">
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Origin</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.AWB_Origin }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Destination</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.AWB_Destination }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Pieces</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.Pieces }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Actual Weight</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.Weight_Actual }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Unit</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.Weight_Identifier }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Volume</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.Volume }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Volume ID</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.Volume_Identifier }}</span>
-              </mat-list-item>
-
-              <mat-list-item class="row__more-info-item" role="listitem">
-                <h3 matListItemTitle>Goods Description</h3>
-                <span matListItemLine>{{ fwbRow.fWB_Details.Goods_Description }}</span>
-              </mat-list-item>
-
-            </mat-list>
-          </mat-card-content>
-        </mat-card>
+        <app-fwb-detail-card [fwbDetails]="fwbRow.fWB_Details"  />
       </div>
     }
   </ng-template>

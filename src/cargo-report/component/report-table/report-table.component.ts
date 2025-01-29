@@ -6,14 +6,12 @@ import { MatSortModule, Sort } from '@angular/material/sort';
 import { ReportSortService } from '../../service/report-sort.service';
 import { ReportData, ReportSortUrlParams } from '../../model/report.model';
 import { NgTemplateOutlet } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatRipple } from '@angular/material/core';
-import { REPORT_FIELDS_CONFIG } from '../../config/report-detail-fields.config';
+import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
+import { FwbDetailCardComponent } from '../fwb-detail-card/fwb-detail-card.component';
 
 @Component({
   selector: 'app-report-table',
-  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, MatCardModule, MatListModule],
+  imports: [MatTableModule, MatSortModule, NgTemplateOutlet, FwbDetailCardComponent],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
