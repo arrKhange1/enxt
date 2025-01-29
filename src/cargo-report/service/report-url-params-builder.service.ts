@@ -1,16 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { ReportUrlParamsDataService } from '../store/report-url-params.data.service';
-import { debounceTime, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
+import { map, Observable, shareReplay, switchMap, tap } from 'rxjs';
 import { ReportResponse, ReportUrlParams } from '../model/report.model';
 import { HttpParams } from '@angular/common/http';
 import { ReportApiService } from '../../shared/service/report.api.service';
+import { debounceTimeAfter } from '../../shared/operator-function/debounceTimeAfter';
 
 @Injectable()
 export class ReportUrlParamsBuilderService {
   private urlParamsDataService = inject(ReportUrlParamsDataService);
   private reportApiService = inject(ReportApiService);
   private parameterizedReport$ = this.urlParamsDataService.reportUrlParams$.pipe(
-    debounceTime(500),
+    debounceTimeAfter(1, 500),
     map((reportUrlParams) => this.buildUrlParams(reportUrlParams)),
     switchMap((params) => this.reportApiService.getReport(params)),
     tap((response) => console.log(response.fwb_data.length)),
