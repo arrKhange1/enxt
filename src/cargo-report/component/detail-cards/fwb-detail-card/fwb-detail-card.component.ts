@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, OnInit, signal } from '@angular/core';
 import { ListItem } from '../../../../shared/model/list-item';
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
 import { ReportData } from '../../../model/report.model';
@@ -11,14 +11,12 @@ import { CardWithListComponent } from '../../../../shared/components/card-with-l
   styleUrl: './fwb-detail-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FwbDetailCardComponent implements OnInit {
-  public fwbDetails = input<ReportData['fWB_Details']>();
-  protected cardData = signal<ListItem[]>([]);
+export class FwbDetailCardComponent {
   private reportFields = REPORT_FIELDS_CONFIG;
-
-  public ngOnInit() {
+  public fwbDetails = input<ReportData['fWB_Details']>();
+  protected cardData = computed<ListItem[]>(() => {
     const fwbDetails = this.fwbDetails();
-    this.cardData.set([
+    return [
       { name: this.reportFields.fwbDetails.prefix, value: fwbDetails?.AWB_Prefix || 'None' },
       { name: this.reportFields.fwbDetails.serial, value: fwbDetails?.AWB_Serial || 'None' },
       { name: this.reportFields.fwbDetails.origin, value: fwbDetails?.AWB_Origin || 'None' },
@@ -28,6 +26,6 @@ export class FwbDetailCardComponent implements OnInit {
       { name: this.reportFields.fwbDetails.weightId, value: fwbDetails?.Weight_Identifier || 'None' },
       { name: this.reportFields.fwbDetails.volume, value: fwbDetails?.Volume ?? 'None' },
       { name: this.reportFields.fwbDetails.volumeId, value: fwbDetails?.Volume_Identifier || 'None' },
-    ]);
-  }
+    ];
+  });
 }
