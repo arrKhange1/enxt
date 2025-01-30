@@ -1,9 +1,21 @@
-<section class="report-table-layout">
-  <app-report-time-interval />
-  <app-report-table />
-  <app-report-paginator />
+<section class="report-page" cdkDropListGroup>
+  <section class="report-table-layout">
+    <app-report-time-interval />
+    <app-report-table />
+    <app-report-paginator />
+  </section>
+  <section class="saved-reports">
+    Saved Reports
+    <div
+      cdkDropList
+      [cdkDropListData]="savedReports"
+      (cdkDropListDropped)="drop($event)"
+    >
+      @for (row of savedReports; track row) {
+        <div cdkDrag cdkDragDisabled>Item {{ row.fWB_Details.AWB_Serial }}</div>
+      }
+    </div>
+  </section>
 </section>
-<section class="report-cards">
-  Report cards
-</section>
+
 

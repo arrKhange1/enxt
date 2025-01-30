@@ -1,4 +1,4 @@
-:host {
+.report-page {
   display: flex;
   height: 100%;
 }
@@ -11,6 +11,10 @@
   gap: 0.75em
 }
 
-.report-cards {
+.saved-reports {
   flex: 1;
+
+  & > div {
+    height: 100%;
+  }
 }

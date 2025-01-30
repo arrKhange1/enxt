@@ -6,7 +6,7 @@
   (matSortChange)="sortChange($event)"
   [dataSource]="reportData()"
   cdkDropList
-  #reportTable
+  cdkDropListSortingDisabled
   [cdkDropListData]="reportData()"
 >
   <ng-container matColumnDef="prefix">
