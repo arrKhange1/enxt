@@ -15,14 +15,7 @@
             <span>Prefix: {{ row.fWB_Details.AWB_Prefix }}</span>
             <span>Serial Nr: {{ row.fWB_Details.AWB_Serial }}</span>
         </mat-expansion-panel-header>
-        <section class="content">
-          <app-fwb-detail-card [fwbDetails]="row.fWB_Details" />
-          @if (row.agent_Details) {
-            <app-agent-detail-card [agentDetails]="row.agent_Details" />
-          }
-          <app-consignee-detail-card [consigneeDetails]="row.consignee_Details" />
-          <app-shipper-detail-card [shipperDetails]="row.shipper_Details" />
-        </section>
+        <app-detail-cards-container [gridColumns]="1" [fwbRow]="row" />
       </mat-expansion-panel>
     }
   </mat-accordion>

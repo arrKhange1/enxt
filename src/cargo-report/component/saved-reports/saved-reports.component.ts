@@ -7,6 +7,7 @@ import { FwbDetailCardComponent } from '../detail-cards/fwb-detail-card/fwb-deta
 import { AgentDetailCardComponent } from '../detail-cards/agent-detail-card/agent-detail-card.component';
 import { ConsigneeDetailCardComponent } from '../detail-cards/consignee-detail-card/consignee-detail-card.component';
 import { ShipperDetailCardComponent } from '../detail-cards/shipper-detail-card/shipper-detail-card.component';
+import { DetailCardsContainerComponent } from '../../container/detail-cards-container/detail-cards-container.component';
 
 @Component({
   selector: 'app-saved-reports',
@@ -19,6 +20,7 @@ import { ShipperDetailCardComponent } from '../detail-cards/shipper-detail-card/
     AgentDetailCardComponent,
     ConsigneeDetailCardComponent,
     ShipperDetailCardComponent,
+    DetailCardsContainerComponent,
   ],
   templateUrl: './saved-reports.component.html',
   styleUrl: './saved-reports.component.scss',

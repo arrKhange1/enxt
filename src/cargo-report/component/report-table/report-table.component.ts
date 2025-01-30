@@ -12,6 +12,7 @@ import { AgentDetailCardComponent } from '../detail-cards/agent-detail-card/agen
 import { ShipperDetailCardComponent } from '../detail-cards/shipper-detail-card/shipper-detail-card.component';
 import { ConsigneeDetailCardComponent } from '../detail-cards/consignee-detail-card/consignee-detail-card.component';
 import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
+import { DetailCardsContainerComponent } from '../../container/detail-cards-container/detail-cards-container.component';
 
 @Component({
   selector: 'app-report-table',
@@ -26,6 +27,7 @@ import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop
     ShipperDetailCardComponent,
     ConsigneeDetailCardComponent,
     CdkDragPlaceholder,
+    DetailCardsContainerComponent,
   ],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',

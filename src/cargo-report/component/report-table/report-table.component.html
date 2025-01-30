@@ -57,14 +57,7 @@
 
   <ng-template #rowContent let-fwbRow>
     @if (expandedRow === fwbRow) {
-      <div class="row__more-info">
-        <app-fwb-detail-card [fwbDetails]="fwbRow.fWB_Details" />
-        @if (fwbRow.agent_Details) {
-          <app-agent-detail-card [agentDetails]="fwbRow.agent_Details" />
-        }
-        <app-shipper-detail-card [shipperDetails]="fwbRow.shipper_Details" />
-        <app-consignee-detail-card [consigneeDetails]="fwbRow.consignee_Details" />
-      </div>
+      <app-detail-cards-container [fwbRow]="fwbRow" />
     }
   </ng-template>
 
