@@ -25,6 +25,17 @@
   height: 60px;
 }
 
-.list__item-content {
-  grid-template-columns: 1fr;
+.list__empty-content {
+  font-size: 1.25rem;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+
+  & > mat-icon {
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
+  }
 }
