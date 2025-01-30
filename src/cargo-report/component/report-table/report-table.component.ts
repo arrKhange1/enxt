@@ -11,12 +11,15 @@ import { FwbDetailCardComponent } from '../detail-cards/fwb-detail-card/fwb-deta
 import { AgentDetailCardComponent } from '../detail-cards/agent-detail-card/agent-detail-card.component';
 import { ShipperDetailCardComponent } from '../detail-cards/shipper-detail-card/shipper-detail-card.component';
 import { ConsigneeDetailCardComponent } from '../detail-cards/consignee-detail-card/consignee-detail-card.component';
+import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-report-table',
   imports: [
     MatTableModule,
     MatSortModule,
+    CdkDropList,
+    CdkDrag,
     NgTemplateOutlet,
     FwbDetailCardComponent,
     AgentDetailCardComponent,

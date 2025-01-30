@@ -5,12 +5,12 @@
 
 .report-table-layout {
   padding: 1em;
-  flex: 1;
   display: flex;
+  flex: 3;
   flex-direction: column;
   gap: 0.75em
 }
 
 .report-cards {
-  display: none;
+  flex: 1;
 }
