@@ -12,8 +12,8 @@
     @for (row of savedReports; track row; let index = $index) {
       <mat-expansion-panel cdkDrag cdkDragDisabled hideToggle>
         <mat-expansion-panel-header class="list__item-header">
-            <span>Prefix: {{ row.fWB_Details.AWB_Prefix }}</span>
-            <span>Serial Nr: {{ row.fWB_Details.AWB_Serial }}</span>
+            <span>{{ fwbDetailsConfig.prefix }}: {{ row.fWB_Details.AWB_Prefix }}</span>
+            <span>{{ fwbDetailsConfig.serial }}: {{ row.fWB_Details.AWB_Serial }}</span>
         </mat-expansion-panel-header>
         <app-detail-cards-container [gridColumns]="1" [fwbRow]="row" />
       </mat-expansion-panel>
