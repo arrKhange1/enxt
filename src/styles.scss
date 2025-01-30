@@ -13,5 +13,12 @@ html {
 *, :after, :before {
   box-sizing: border-box;
 }
+
 html, body { height: 100%; }
 body { margin: 0; }
+
+.drag-placeholder {
+  background: #ccc;
+  border: dotted 3px #999;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

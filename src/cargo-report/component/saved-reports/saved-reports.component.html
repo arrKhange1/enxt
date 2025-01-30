@@ -6,11 +6,14 @@
     #savedReportsList="cdkDropList"
     [cdkDropListData]="savedReports"
     (cdkDropListDropped)="drop($event)"
-    [cdkDropListEnterPredicate]="savedReportsEntered"
+    [cdkDropListEnterPredicate]="savedReportsEnteredPredicate"
   >
     @for (row of savedReports; track row) {
-      <div cdkDrag cdkDragDisabled>Item {{ row.fWB_Details.AWB_Serial }}</div>
+      <div cdkDrag>
+        Item {{ row.fWB_Details.AWB_Serial }}
+      </div>
     }
   </div>
 </section>
+
 

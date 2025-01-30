@@ -46,6 +46,12 @@
     [ngTemplateOutlet]="rowContent"
     [ngTemplateOutletContext]="{ $implicit: fwbRow }"
   >
+    <!--
+      placeholder привязан к перетаскиваемой строке, а не к списку
+      поэтому приходится переопределить template у placeholder внутри строки
+      а менять стили placeholder уже в конкретном списке
+      -->
+    <div class="drag-placeholder report-table__row-placeholder" *cdkDragPlaceholder></div>
   </mat-row>
 
 

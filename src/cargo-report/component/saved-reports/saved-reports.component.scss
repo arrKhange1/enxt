@@ -6,8 +6,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0.5em;
 }
 
 .saved-reports__list {
   flex: 1;
+}
+
+:host ::ng-deep .cdk-drag-placeholder {
+  width: min(60px, 100%);
+  height: 60px;
 }

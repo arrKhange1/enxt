@@ -11,11 +11,11 @@ import { ReportData } from '../../model/report.model';
 })
 export class SavedReportsComponent {
   protected savedReports: ReportData[] = [];
-  protected savedReportsEntered: (dragEvent: CdkDrag<ReportData>) => boolean = (dragEvent) => {
+  protected savedReportsEnteredPredicate: (dragEvent: CdkDrag<ReportData>) => boolean = (dragEvent) => {
     return !this.savedReports.includes(dragEvent.data);
   };
 
-  drop(event: CdkDragDrop<ReportData[]>) {
+  protected drop(event: CdkDragDrop<ReportData[]>) {
     if (event.previousContainer !== event.container) {
       copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
