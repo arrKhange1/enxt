@@ -1,0 +1,13 @@
+:host {
+  flex: 1;
+}
+
+.saved-reports {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-reports__list {
+  flex: 1;
+}

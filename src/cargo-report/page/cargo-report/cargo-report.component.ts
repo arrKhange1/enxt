@@ -5,8 +5,8 @@ import { ReportUrlParamsBuilderService } from '../../service/report-url-params-b
 import { ReportPaginatorComponent } from '../../component/report-paginator/report-paginator.component';
 import { ReportTimeIntervalComponent } from '../../component/report-time-interval/report-time-interval.component';
 import { ReportSortService } from '../../service/report-sort.service';
-import { ReportData } from '../../model/report.model';
-import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, copyArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDropListGroup } from '@angular/cdk/drag-drop';
+import { SavedReportsComponent } from '../../component/saved-reports/saved-reports.component';
 
 @Component({
   selector: 'app-cargo-report',
@@ -14,22 +14,12 @@ import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup, copyArrayItem } fr
     ReportTableComponent,
     ReportPaginatorComponent,
     ReportTimeIntervalComponent,
-    CdkDropList,
     CdkDropListGroup,
-    CdkDrag,
+    SavedReportsComponent,
   ],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
   providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CargoReportComponent {
-  protected savedReports: ReportData[] = [];
-
-  drop(event: CdkDragDrop<ReportData[]>) {
-    if (event.previousContainer !== event.container) {
-      console.log(event.previousIndex, event.currentIndex);
-      copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
-    }
-  }
-}
+export class CargoReportComponent {}

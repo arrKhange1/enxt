@@ -1,6 +1,7 @@
 @let fwbDetailsConfig = reportFieldsConfig.fwbDetails;
 
 <mat-table
+  #reportTableList="cdkDropList"
   class="report-table"
   matSort
   (matSortChange)="sortChange($event)"
@@ -38,6 +39,7 @@
   <mat-row
     class="report-table__row"
     cdkDrag
+    [cdkDragData]="fwbRow"
     (click)="expandRowContent(fwbRow)"
     [attr.data-agent]="fwbRow.agent_Details"
     *matRowDef="let fwbRow; columns: columnsToDisplay"
