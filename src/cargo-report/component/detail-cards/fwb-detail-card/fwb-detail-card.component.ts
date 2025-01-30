@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { ListItem } from '../../../../shared/model/list-item';
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
 import { ReportData } from '../../../model/report.model';
