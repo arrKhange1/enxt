@@ -1,4 +1,5 @@
 .info-card {
+  container: card / inline-size;
 }
 
 .info-list {
@@ -8,10 +9,9 @@
   grid-column-gap: 2em;
   grid-template-columns: auto auto auto;
 
-  @media (max-width: 860px) {
+  @container card (width < 250px) {
     grid-template-columns: auto auto;
   }
-
 }
 
 :host ::ng-deep .info-list-item {
