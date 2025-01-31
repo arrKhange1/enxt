@@ -57,7 +57,7 @@
 
 
     <ng-template #rowContent let-fwbRow>
-      @if (expandedRow === fwbRow) {
+      @if (expandedRow() === fwbRow) {
         <app-detail-cards-container [fwbRow]="fwbRow" />
       }
     </ng-template>

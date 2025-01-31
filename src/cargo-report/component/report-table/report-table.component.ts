@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
 import { MatSortModule, Sort } from '@angular/material/sort';
@@ -26,21 +26,19 @@ import { DetailCardsContainerComponent } from '../../container/detail-cards-cont
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportTableComponent {
-  private cdr = inject(ChangeDetectorRef);
   private reportSortService = inject(ReportSortService);
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   protected reportData$ = this.reportParamsBuilderService.getParameterizedFwbData();
-  protected expandedRow: ReportData | null = null;
+  protected expandedRow = signal<ReportData | null>(null);
   protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
   protected reportFieldsConfig = REPORT_FIELDS_CONFIG;
 
   protected expandRowContent(row: ReportData) {
-    if (row !== this.expandedRow) {
-      this.expandedRow = row;
+    if (row !== this.expandedRow()) {
+      this.expandedRow.set(row);
     } else {
-      this.expandedRow = null;
+      this.expandedRow.set(null);
     }
-    this.cdr.markForCheck();
   }
 
   protected sortChange({ active, direction }: Sort): void {
