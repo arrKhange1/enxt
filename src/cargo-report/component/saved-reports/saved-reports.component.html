@@ -5,10 +5,12 @@
     #savedReportsList="cdkDropList"
     [cdkDropListData]="savedReports"
     (cdkDropListDropped)="drop($event)"
+    (cdkDropListExited)="dragEntered.set(false)"
+    (cdkDropListEntered)="dragEntered.set(true)"
     [cdkDropListEnterPredicate]="savedReportsEnteredPredicate"
     multi
   >
-    @if (!savedReports.length) {
+    @if (!savedReports.length && !dragEntered()) {
       <section cdkDropList class="list__empty-content">
         <span>Drag to Save</span>
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add_circle_outline"></mat-icon>
