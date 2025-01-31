@@ -8,6 +8,7 @@ import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
 import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
 import { DetailCardsContainerComponent } from '../../container/detail-cards-container/detail-cards-container.component';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-report-table',
@@ -20,6 +21,7 @@ import { DetailCardsContainerComponent } from '../../container/detail-cards-cont
     CdkDragPlaceholder,
     DetailCardsContainerComponent,
     AsyncPipe,
+    MatProgressSpinner,
   ],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',
@@ -29,6 +31,7 @@ export class ReportTableComponent {
   private reportSortService = inject(ReportSortService);
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   protected reportData$ = this.reportParamsBuilderService.getParameterizedFwbData();
+  protected isReportDataLoading$ = inject(ReportUrlParamsBuilderService).getReportLoadingState();
   protected expandedRow = signal<ReportData | null>(null);
   protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
   protected reportFieldsConfig = REPORT_FIELDS_CONFIG;

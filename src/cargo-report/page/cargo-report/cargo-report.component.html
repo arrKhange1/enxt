@@ -1,11 +1,7 @@
 <section class="report-page" cdkDropListGroup>
   <section class="report-table-layout">
     <app-report-time-interval />
-    @if (isLoading$ | async) {
-      <div>...Loading</div>
-    } @else {
-      <app-report-table />
-    }
+    <app-report-table />
     <app-report-paginator />
   </section>
   <app-saved-reports />

@@ -1,7 +1,9 @@
 @let fwbDetailsConfig = reportFieldsConfig.fwbDetails;
 @let reportData = (reportData$ | async) ?? [];
+@let isReportDataLoading = isReportDataLoading$ | async;
 
-<mat-table
+@if (!isReportDataLoading) {
+  <mat-table
     #reportTableList="cdkDropList"
     class="report-table"
     matSort
@@ -63,4 +65,13 @@
     </ng-template>
 
   </mat-table>
+} @else {
+  <section class="report-table-placeholder">
+    <mat-spinner />
+  </section>
+}
+
+
+
+
 
