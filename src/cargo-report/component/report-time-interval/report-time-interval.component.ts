@@ -34,9 +34,10 @@ export class ReportTimeIntervalComponent {
 
   protected submitInterval() {
     const { from, until } = this.timeIntervalForm.value;
-    this.reportUrlParamsDataService.changeTimeInterval({
+    this.reportUrlParamsDataService.patchUrlParams({
       from: from?.toISOString() ?? null,
       until: until?.toISOString() ?? null,
+      pageNumber: 0,
     });
   }
 }

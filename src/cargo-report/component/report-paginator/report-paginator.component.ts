@@ -17,6 +17,6 @@ export class ReportPaginatorComponent {
   protected totalRecords$ = this.reportUrlParamsBuilderService.getParameterizedTotalRecords();
 
   protected onPaginationChange({ pageIndex, pageSize }: PageEvent) {
-    this.reportUrlParamsDataService.changePageParams({ pageSize, pageNumber: pageIndex });
+    this.reportUrlParamsDataService.patchUrlParams({ pageSize, pageNumber: pageIndex });
   }
 }

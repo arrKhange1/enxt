@@ -8,12 +8,12 @@ export class ReportSortService {
 
   public sortReport({ sortOrder, sortName }: ReportSortUrlParams): void {
     if (!sortOrder) {
-      this.reportUrlDataService.changeSortParams({
+      this.reportUrlDataService.patchUrlParams({
         sortOrder: null,
         sortName: null,
       });
     } else {
-      this.reportUrlDataService.changeSortParams({
+      this.reportUrlDataService.patchUrlParams({
         sortOrder,
         sortName,
       });

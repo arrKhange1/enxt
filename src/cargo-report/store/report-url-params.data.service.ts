@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ReportPageUrlParams, ReportSortUrlParams, ReportTimeUrlParams, ReportUrlParams } from '../model/report.model';
+import { ReportUrlParams } from '../model/report.model';
 
 @Injectable()
 export class ReportUrlParamsDataService {
@@ -15,15 +15,7 @@ export class ReportUrlParamsDataService {
 
   public reportUrlParams$ = this._reportUrlParams$.asObservable();
 
-  public changePageParams(pageParams: ReportPageUrlParams): void {
-    this._reportUrlParams$.next({ ...this._reportUrlParams$.getValue(), ...pageParams });
-  }
-
-  public changeTimeInterval(params: ReportTimeUrlParams): void {
-    this._reportUrlParams$.next({ ...this._reportUrlParams$.getValue(), ...params });
-  }
-
-  public changeSortParams(params: ReportSortUrlParams): void {
-    this._reportUrlParams$.next({ ...this._reportUrlParams$.getValue(), ...params });
+  public patchUrlParams(urlParams: Partial<ReportUrlParams>) {
+    this._reportUrlParams$.next({ ...this._reportUrlParams$.getValue(), ...urlParams });
   }
 }
