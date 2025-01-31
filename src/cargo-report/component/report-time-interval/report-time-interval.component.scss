@@ -1,13 +1,9 @@
 .time-interval-form {
   display: flex;
   gap: 1em;
-  margin-bottom: 1em;
-
-  & .time-interval-form__interval {
-
-  }
 
   & > button {
+    margin-bottom: 1.25em;
     align-self: center;
   }
 }

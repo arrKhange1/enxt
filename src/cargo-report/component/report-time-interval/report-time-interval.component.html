@@ -1,10 +1,11 @@
 <form class="time-interval-form" [formGroup]="timeIntervalForm">
-  <mat-form-field class="time-interval-form__interval" subscriptSizing="dynamic">
-    <mat-label>Filter by date range</mat-label>
+  <mat-form-field class="time-interval-form__interval" >
+    <mat-label>Filter by a date interval</mat-label>
     <mat-date-range-input [rangePicker]="picker">
       <input matStartDate formControlName="from" placeholder="From">
       <input matEndDate formControlName="until" placeholder="Until">
     </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
@@ -12,6 +13,7 @@
     (click)="submitInterval()"
     [disabled]="timeIntervalForm.invalid || timeIntervalForm.untouched"
     mat-raised-button
-    matTooltip="Choose an interval">Apply</button>
+    matTooltip="Choose an interval">Apply
+  </button>
 </form>
 
