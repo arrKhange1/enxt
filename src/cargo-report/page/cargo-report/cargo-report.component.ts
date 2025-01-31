@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ReportTableComponent } from '../../component/report-table/report-table.component';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
@@ -7,8 +7,9 @@ import { ReportTimeIntervalComponent } from '../../component/report-time-interva
 import { ReportSortService } from '../../service/report-sort.service';
 import { CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { SavedReportsComponent } from '../../component/saved-reports/saved-reports.component';
-import { AsyncPipe } from '@angular/common';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatButton } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-cargo-report',
@@ -18,10 +19,15 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     ReportTimeIntervalComponent,
     CdkDropListGroup,
     SavedReportsComponent,
+    MatButton,
+    MatIcon,
+    NgClass,
   ],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
   providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CargoReportComponent {}
+export class CargoReportComponent {
+  protected areSavedReportsVisible = signal(false);
+}

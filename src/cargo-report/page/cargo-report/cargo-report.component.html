@@ -4,7 +4,17 @@
     <app-report-table />
     <app-report-paginator />
   </section>
-  <app-saved-reports />
+  <section class="saved-reports-layout" [ngClass]="{'collapsed': !areSavedReportsVisible()}">
+    <button
+      class="saved-reports-layout__btn"
+      mat-button
+      (click)="areSavedReportsVisible.set(!areSavedReportsVisible())"
+      aria-label="Toggle saved reports"
+    >
+      <mat-icon [fontIcon]="areSavedReportsVisible() ? 'arrow_forward_ios' : 'arrow_back_ios'"></mat-icon>
+    </button>
+    <app-saved-reports />
+  </section>
 </section>
 
 

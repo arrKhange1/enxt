@@ -11,3 +11,28 @@
   gap: 0.75em
 }
 
+.saved-reports-layout {
+  position: relative;
+  padding: 0 0.5em;
+  flex: 1;
+
+  &__btn {
+    position: absolute;
+    top: 0;
+    left: -48px;
+    min-width: unset;
+    width: 48px;
+
+    & > mat-icon {
+      margin: 0;
+    }
+  }
+}
+
+.collapsed {
+  flex: unset;
+  width: 0;
+  padding: 0;
+}
+
+
