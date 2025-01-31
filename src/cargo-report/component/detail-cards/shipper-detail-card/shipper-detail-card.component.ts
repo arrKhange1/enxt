@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
 import { ReportData } from '../../../model/report.model';
 import { ListItem } from '../../../../shared/model/list-item';
-import { CardWithListComponent } from '../../../../shared/components/card-with-list/card-with-list.component';
+import { CardWithListComponent } from '../../../../shared/component/card-with-list/card-with-list.component';
 
 @Component({
   selector: 'app-shipper-detail-card',

@@ -8,6 +8,7 @@ import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
 import { MatIcon } from '@angular/material/icon';
 import { AsyncPipe } from '@angular/common';
 import { MatIconButton } from '@angular/material/button';
+import { DeleteButtonComponent } from '../../../shared/component/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-saved-reports',
@@ -20,6 +21,7 @@ import { MatIconButton } from '@angular/material/button';
     MatIcon,
     AsyncPipe,
     MatIconButton,
+    DeleteButtonComponent,
   ],
   templateUrl: './saved-reports.component.html',
   styleUrl: './saved-reports.component.scss',

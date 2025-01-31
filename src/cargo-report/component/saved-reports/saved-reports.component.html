@@ -21,13 +21,7 @@
           <mat-expansion-panel-header class="list__item-header">
             <span>{{ fwbDetailsConfig.prefix }}: {{ row.fWB_Details.AWB_Prefix }}</span>
             <span>{{ fwbDetailsConfig.serial }}: {{ row.fWB_Details.AWB_Serial }}</span>
-            <button mat-icon-button (click)="deleteSavedReport($event, row)" class="list__item-delete-btn">
-              <mat-icon
-                aria-hidden="false"
-                aria-label="Delete saved report"
-                fontIcon="delete"
-              ></mat-icon>
-            </button>
+            <app-delete-button class="list__item-delete-btn" (deleteEvent)="deleteSavedReport($event, row)" />
           </mat-expansion-panel-header>
           <app-detail-cards-container [gridColumns]="1" [fwbRow]="row" />
         </mat-expansion-panel>

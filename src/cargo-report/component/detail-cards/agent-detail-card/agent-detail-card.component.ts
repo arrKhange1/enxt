@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input, signal, OnInit, computed } f
 import { ReportData } from '../../../model/report.model';
 import { ListItem } from '../../../../shared/model/list-item';
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
-import { CardWithListComponent } from '../../../../shared/components/card-with-list/card-with-list.component';
+import { CardWithListComponent } from '../../../../shared/component/card-with-list/card-with-list.component';
 
 @Component({
   selector: 'app-agent-detail-card',

@@ -28,11 +28,6 @@
   .list__item-delete-btn {
     margin-left: auto;
   }
-
-  .list__item-delete-btn:hover {
-    color: red;
-  }
-
 }
 
 :host ::ng-deep .cdk-drag-placeholder {
