@@ -7,9 +7,8 @@ import { ReportTimeIntervalComponent } from '../../component/report-time-interva
 import { ReportSortService } from '../../service/report-sort.service';
 import { CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { SavedReportsComponent } from '../../component/saved-reports/saved-reports.component';
-import { MatButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
 import { NgClass } from '@angular/common';
+import { CollapseButtonComponent } from '../../../shared/component/collapse-button/collapse-button.component';
 
 @Component({
   selector: 'app-cargo-report',
@@ -19,9 +18,8 @@ import { NgClass } from '@angular/common';
     ReportTimeIntervalComponent,
     CdkDropListGroup,
     SavedReportsComponent,
-    MatButton,
-    MatIcon,
     NgClass,
+    CollapseButtonComponent,
   ],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',

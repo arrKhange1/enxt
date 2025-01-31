@@ -1,0 +1,8 @@
+.collapse-btn {
+  min-width: unset;
+  width: 48px;
+
+  & > mat-icon {
+    margin: 0;
+  }
+}

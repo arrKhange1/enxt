@@ -1,0 +1,8 @@
+<button
+  class="collapse-btn"
+  mat-button
+  (click)="collapseEvent.emit(!isCollapsed())"
+  aria-label="Collapse button"
+>
+  <mat-icon aria-label="Collapse icon" [fontIcon]="!isCollapsed() ? 'arrow_forward_ios' : 'arrow_back_ios'"></mat-icon>
+</button>

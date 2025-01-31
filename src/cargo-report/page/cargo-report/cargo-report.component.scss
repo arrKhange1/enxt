@@ -13,26 +13,18 @@
 
 .saved-reports-layout {
   position: relative;
-  padding: 0 0.5em;
+  margin-left: 0.5em;
   flex: 1;
 
   &__btn {
     position: absolute;
     top: 0;
-    left: -48px;
-    min-width: unset;
-    width: 48px;
+    left: -3.5rem;
+  }
 
-    & > mat-icon {
-      margin: 0;
-    }
+  &--collapsed {
+    flex: unset;
+    width: 0;
+    margin: 0;
   }
 }
-
-.collapsed {
-  flex: unset;
-  width: 0;
-  padding: 0;
-}
-
-

@@ -24,7 +24,7 @@ export abstract class WithLoading {
 
   public catchLoadingError<T>(): OperatorFunction<LoadedValue<T>, LoadedValue<T>> {
     return catchError((error) => {
-      console.error('Error occured:', error);
+      console.error('Error occurred:', error);
       return of({ isLoading: false, error });
     });
   }
