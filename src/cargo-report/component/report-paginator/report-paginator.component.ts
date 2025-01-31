@@ -3,7 +3,6 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
 import { AsyncPipe } from '@angular/common';
-import { take } from 'rxjs';
 
 @Component({
   selector: 'app-report-paginator',
@@ -16,7 +15,6 @@ export class ReportPaginatorComponent {
   private reportUrlParamsBuilderService = inject(ReportUrlParamsBuilderService);
   protected reportUrlParamsDataService = inject(ReportUrlParamsDataService);
   protected totalRecords$ = this.reportUrlParamsBuilderService.getParameterizedTotalRecords();
-  protected isReportDataLoading$ = this.reportUrlParamsBuilderService.getReportLoadingState().pipe(take(2));
 
   protected onPaginationChange({ pageIndex, pageSize }: PageEvent) {
     this.reportUrlParamsDataService.changePageParams({ pageSize, pageNumber: pageIndex });
