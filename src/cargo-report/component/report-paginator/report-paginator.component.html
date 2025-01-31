@@ -1,11 +1,13 @@
 @let urlParams = reportUrlParamsDataService.reportUrlParams$ | async;
 @let totalRecords = totalRecords$ | async;
+@let isReportDataLoading = isReportDataLoading$ | async;
 
 <mat-paginator [length]="totalRecords"
                [pageSize]="urlParams?.pageSize"
                [pageIndex]="urlParams?.pageNumber"
                [pageSizeOptions]="[50,100]"
                (page)="onPaginationChange($event)"
+               [disabled]="isReportDataLoading"
                aria-label="Select page">
 </mat-paginator>
 

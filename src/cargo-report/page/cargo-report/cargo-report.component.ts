@@ -7,7 +7,6 @@ import { ReportTimeIntervalComponent } from '../../component/report-time-interva
 import { ReportSortService } from '../../service/report-sort.service';
 import { CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { SavedReportsComponent } from '../../component/saved-reports/saved-reports.component';
-import { ReportLoadingDataService } from '../../store/report-loading.data.service';
 import { AsyncPipe } from '@angular/common';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
@@ -19,12 +18,10 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     ReportTimeIntervalComponent,
     CdkDropListGroup,
     SavedReportsComponent,
-    AsyncPipe,
-    MatProgressSpinner,
   ],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
-  providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService, ReportLoadingDataService],
+  providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CargoReportComponent {}

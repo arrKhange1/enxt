@@ -3,7 +3,7 @@ import { ReportUrlParamsDataService } from '../store/report-url-params.data.serv
 import { filter, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
 import { ReportData, ReportResponse, ReportUrlParams } from '../model/report.model';
 import { HttpParams } from '@angular/common/http';
-import { ReportApiService } from '../../shared/service/report.api.service';
+import { ReportApiService } from '../../shared/api/report.api.service';
 import { debounceTimeAfter } from '../../shared/operator-function/debounceTimeAfter';
 import { LoadedValue } from '../../shared/helper/response';
 
