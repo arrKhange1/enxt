@@ -13,7 +13,7 @@
     @if (!savedReports().length && !dragEntered()) {
       <section cdkDropList class="list__empty-content">
         <span>Drag to Save</span>
-        <mat-icon aria-hidden="false" aria-label="Add new saved report" fontIcon="add_circle_outline"></mat-icon>
+        <mat-icon aria-label="Add new saved report" fontIcon="add_circle_outline"></mat-icon>
       </section>
     } @else {
       @for (row of savedReports(); track row) {
@@ -21,7 +21,11 @@
           <mat-expansion-panel-header class="list__item-header">
             <span>{{ fwbDetailsConfig.prefix }}: {{ row.fWB_Details.AWB_Prefix }}</span>
             <span>{{ fwbDetailsConfig.serial }}: {{ row.fWB_Details.AWB_Serial }}</span>
-            <app-delete-button class="list__item-delete-btn" (deleteEvent)="deleteSavedReport($event, row)" />
+            <app-delete-button
+              aria-label="Delete saved report button"
+              class="list__item-delete-btn"
+              (deleteEvent)="deleteSavedReport($event, row)"
+            />
           </mat-expansion-panel-header>
           <app-detail-cards-container [gridColumns]="1" [fwbRow]="row" />
         </mat-expansion-panel>
