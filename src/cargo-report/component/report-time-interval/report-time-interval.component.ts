@@ -6,11 +6,21 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
+import { BehaviorSubject } from 'rxjs';
+import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-report-time-interval',
-  imports: [MatFormFieldModule, MatDatepickerModule, MatDatepickerModule, ReactiveFormsModule, MatButton, MatTooltip],
+  imports: [
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatDatepickerModule,
+    ReactiveFormsModule,
+    MatButton,
+    MatTooltip,
+    AsyncPipe,
+  ],
   providers: [provideNativeDateAdapter()],
   templateUrl: './report-time-interval.component.html',
   styleUrl: './report-time-interval.component.scss',
@@ -18,6 +28,7 @@ import { AsyncPipe } from '@angular/common';
 })
 export class ReportTimeIntervalComponent {
   private reportUrlParamsDataService = inject(ReportUrlParamsDataService);
+  protected isReportDataLoading$ = inject(ReportUrlParamsBuilderService).getReportLoadingState();
 
   protected timeIntervalForm = new FormGroup({
     from: new FormControl<Date | null>(null),
