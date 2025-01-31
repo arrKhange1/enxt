@@ -1,64 +1,66 @@
 @let fwbDetailsConfig = reportFieldsConfig.fwbDetails;
+@let reportData = (reportData$ | async) ?? [];
 
 <mat-table
-  #reportTableList="cdkDropList"
-  class="report-table"
-  matSort
-  (matSortChange)="sortChange($event)"
-  [dataSource]="reportData()"
-  cdkDropList
-  cdkDropListSortingDisabled
-  [cdkDropListData]="reportData()"
->
-  <ng-container matColumnDef="prefix">
-    <mat-header-cell  *matHeaderCellDef>{{ fwbDetailsConfig.prefix }}</mat-header-cell>
-    <mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Prefix}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="serial">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.serial }}</mat-header-cell>
-    <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Serial}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="origin">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.origin }}</mat-header-cell>
-    <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Origin}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="destination">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.destination }}</mat-header-cell>
-    <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Destination}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="act_weight">
-    <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.weight }}</mat-header-cell>
-    <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Actual}} </mat-cell>
-  </ng-container>
-  <ng-container matColumnDef="unit">
-    <mat-header-cell mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.weightId }}</mat-header-cell>
-    <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Identifier}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
-  <mat-row
-    class="report-table__row"
-    cdkDrag
-    [cdkDragData]="fwbRow"
-    (click)="expandRowContent(fwbRow)"
-    [attr.data-agent]="fwbRow.agent_Details"
-    *matRowDef="let fwbRow; columns: columnsToDisplay"
-    [ngTemplateOutlet]="rowContent"
-    [ngTemplateOutletContext]="{ $implicit: fwbRow }"
+    #reportTableList="cdkDropList"
+    class="report-table"
+    matSort
+    (matSortChange)="sortChange($event)"
+    [dataSource]="reportData"
+    cdkDropList
+    cdkDropListSortingDisabled
+    [cdkDropListData]="reportData"
   >
-    <!--
-      placeholder привязан к перетаскиваемой строке, а не к списку
-      поэтому приходится переопределить template у placeholder внутри строки
-      а менять стили placeholder уже в конкретном списке
-      -->
-    <div class="drag-placeholder report-table__row-placeholder" *cdkDragPlaceholder></div>
-  </mat-row>
+    <ng-container matColumnDef="prefix">
+      <mat-header-cell  *matHeaderCellDef>{{ fwbDetailsConfig.prefix }}</mat-header-cell>
+      <mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Prefix}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="serial">
+      <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.serial }}</mat-header-cell>
+      <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Serial}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="origin">
+      <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.origin }}</mat-header-cell>
+      <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Origin}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="destination">
+      <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.destination }}</mat-header-cell>
+      <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Destination}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="act_weight">
+      <mat-header-cell  mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.weight }}</mat-header-cell>
+      <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Actual}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="unit">
+      <mat-header-cell mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.weightId }}</mat-header-cell>
+      <mat-cell  *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.Weight_Identifier}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row
+      class="report-table__row"
+      cdkDrag
+      [cdkDragData]="fwbRow"
+      (click)="expandRowContent(fwbRow)"
+      [attr.data-agent]="fwbRow.agent_Details"
+      *matRowDef="let fwbRow; columns: columnsToDisplay"
+      [ngTemplateOutlet]="rowContent"
+      [ngTemplateOutletContext]="{ $implicit: fwbRow }"
+    >
+      <!--
+        placeholder привязан к перетаскиваемой строке, а не к списку
+        поэтому приходится переопределить template у placeholder внутри строки
+        а менять стили placeholder уже в конкретном списке
+        -->
+      <div class="drag-placeholder report-table__row-placeholder" *cdkDragPlaceholder></div>
+    </mat-row>
 
 
-  <ng-template #rowContent let-fwbRow>
-    @if (expandedRow === fwbRow) {
-      <app-detail-cards-container [fwbRow]="fwbRow" />
-    }
-  </ng-template>
+    <ng-template #rowContent let-fwbRow>
+      @if (expandedRow === fwbRow) {
+        <app-detail-cards-container [fwbRow]="fwbRow" />
+      }
+    </ng-template>
 
-</mat-table>
+  </mat-table>
+

@@ -1,10 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { ReportUrlParamsDataService } from '../store/report-url-params.data.service';
-import { map, Observable, shareReplay, switchMap, tap } from 'rxjs';
-import { ReportResponse, ReportUrlParams } from '../model/report.model';
+import { filter, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
+import { ReportData, ReportResponse, ReportUrlParams } from '../model/report.model';
 import { HttpParams } from '@angular/common/http';
 import { ReportApiService } from '../../shared/service/report.api.service';
 import { debounceTimeAfter } from '../../shared/operator-function/debounceTimeAfter';
+import { LoadedValue } from '../../shared/helper/response';
 
 @Injectable()
 export class ReportUrlParamsBuilderService {
@@ -14,7 +15,6 @@ export class ReportUrlParamsBuilderService {
     debounceTimeAfter(1, 500),
     map((reportUrlParams) => this.buildUrlParams(reportUrlParams)),
     switchMap((params) => this.reportApiService.getReport(params)),
-    tap((response) => console.log(response.fwb_data.length)),
     shareReplay({ bufferSize: 1, refCount: true }),
   );
 
@@ -27,11 +27,21 @@ export class ReportUrlParamsBuilderService {
     return httpParams;
   }
 
-  public getParameterizedFwbData(): Observable<ReportResponse['fwb_data']> {
-    return this.parameterizedReport$.pipe(map((res: ReportResponse) => res.fwb_data));
+  public getParameterizedFwbData(): Observable<ReportData[]> {
+    return this.parameterizedReport$.pipe(
+      map((response) => response.data?.fwb_data),
+      filter((data) => data !== undefined),
+    );
   }
 
   public getParameterizedTotalRecords(): Observable<ReportResponse['totalRecords']> {
-    return this.parameterizedReport$.pipe(map((res: ReportResponse) => res.totalRecords));
+    return this.parameterizedReport$.pipe(
+      map((response) => response.data?.totalRecords),
+      filter((totalRecords) => totalRecords !== undefined),
+    );
+  }
+
+  public getReportLoadingState(): Observable<boolean> {
+    return this.parameterizedReport$.pipe(map((response) => response.isLoading));
   }
 }

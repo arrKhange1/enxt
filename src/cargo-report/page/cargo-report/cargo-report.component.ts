@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ReportTableComponent } from '../../component/report-table/report-table.component';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
@@ -7,6 +7,8 @@ import { ReportTimeIntervalComponent } from '../../component/report-time-interva
 import { ReportSortService } from '../../service/report-sort.service';
 import { CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { SavedReportsComponent } from '../../component/saved-reports/saved-reports.component';
+import { ReportLoadingDataService } from '../../store/report-loading.data.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-cargo-report',
@@ -16,10 +18,13 @@ import { SavedReportsComponent } from '../../component/saved-reports/saved-repor
     ReportTimeIntervalComponent,
     CdkDropListGroup,
     SavedReportsComponent,
+    AsyncPipe,
   ],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
-  providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService],
+  providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService, ReportLoadingDataService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CargoReportComponent {}
+export class CargoReportComponent {
+  protected isLoading$ = inject(ReportUrlParamsBuilderService).getReportLoadingState();
+}
