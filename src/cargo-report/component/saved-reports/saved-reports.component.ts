@@ -7,6 +7,7 @@ import { DetailCardsContainerComponent } from '../../container/detail-cards-cont
 import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
 import { MatIcon } from '@angular/material/icon';
 import { AsyncPipe } from '@angular/common';
+import { MatIconButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-saved-reports',
@@ -18,6 +19,7 @@ import { AsyncPipe } from '@angular/common';
     DetailCardsContainerComponent,
     MatIcon,
     AsyncPipe,
+    MatIconButton,
   ],
   templateUrl: './saved-reports.component.html',
   styleUrl: './saved-reports.component.scss',

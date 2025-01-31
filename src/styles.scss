@@ -17,6 +17,11 @@ html {
 html, body { height: 100%; }
 body { margin: 0; }
 
+button {
+  background: unset;
+  border: none;
+}
+
 .drag-placeholder {
   background: #ccc;
   border: dotted 3px #999;
