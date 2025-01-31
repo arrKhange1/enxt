@@ -24,16 +24,22 @@ import { AsyncPipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SavedReportsComponent {
-  protected savedReports: ReportData[] = [];
+  protected savedReports = signal<ReportData[]>([]);
   protected savedReportsEnteredPredicate: (dragEvent: CdkDrag<ReportData>) => boolean = (dragEvent) => {
-    return !this.savedReports.includes(dragEvent.data);
+    return !this.savedReports().includes(dragEvent.data);
   };
   protected fwbDetailsConfig = REPORT_FIELDS_CONFIG.fwbDetails;
   protected dragEntered = signal<boolean>(false);
 
   protected drop(event: CdkDragDrop<ReportData[]>) {
+    this.dragEntered.set(false);
     if (event.previousContainer !== event.container) {
       copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
+  }
+
+  protected deleteSavedReport(deleteEvent: MouseEvent, savedReport: ReportData) {
+    deleteEvent.stopPropagation();
+    this.savedReports.update((reports) => reports.filter((report) => report !== savedReport));
   }
 }

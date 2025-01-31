@@ -19,6 +19,15 @@
 
 :host ::ng-deep .list__item-header .mat-content {
   gap: 1em;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+
+  .list__item-delete-btn {
+    cursor: pointer;
+    margin-left: auto;
+  }
+
 }
 
 :host ::ng-deep .cdk-drag-placeholder {
@@ -39,3 +48,4 @@
     height: 3rem;
   }
 }
+
