@@ -1,7 +1,7 @@
 <form class="time-interval-form" [formGroup]="timeIntervalForm">
   <mat-form-field class="time-interval-form__interval" subscriptSizing="dynamic">
     <mat-label>Filter by date range</mat-label>
-    <mat-date-range-input [rangePicker]="picker" [disabled]="isReportDataLoading$ | async">
+    <mat-date-range-input [rangePicker]="picker">
       <input matStartDate formControlName="from" placeholder="From">
       <input matEndDate formControlName="until" placeholder="Until">
     </mat-date-range-input>

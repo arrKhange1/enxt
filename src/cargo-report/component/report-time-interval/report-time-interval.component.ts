@@ -6,8 +6,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
-import { BehaviorSubject } from 'rxjs';
-import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -28,7 +26,6 @@ import { AsyncPipe } from '@angular/common';
 })
 export class ReportTimeIntervalComponent {
   private reportUrlParamsDataService = inject(ReportUrlParamsDataService);
-  protected isReportDataLoading$ = inject(ReportUrlParamsBuilderService).getReportLoadingState();
 
   protected timeIntervalForm = new FormGroup({
     from: new FormControl<Date | null>(null),
