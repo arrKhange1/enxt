@@ -19,6 +19,9 @@ interface ReportFieldsConfig {
   consigneeDetails: Record<PersonalDetailFields, string>;
 }
 
+/**
+ * Конфиг с полем и его отображаемым значением для каждого Details
+ */
 export const REPORT_FIELDS_CONFIG: ReportFieldsConfig = {
   fwbDetails: {
     prefix: 'Prefix',
