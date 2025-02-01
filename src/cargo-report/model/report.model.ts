@@ -1,4 +1,4 @@
-export interface FwbDetails {
+interface FwbDetails {
   AWB_Prefix: string;
   AWB_Serial: string;
   AWB_Origin: string;
@@ -11,7 +11,7 @@ export interface FwbDetails {
   Goods_Description: string | null;
 }
 
-export interface AgentDetails {
+interface AgentDetails {
   Account_Number: string;
   IATA_Code: string;
   IATA_CASS_Adress: string;
@@ -20,7 +20,7 @@ export interface AgentDetails {
   Place: string;
 }
 
-export interface PersonDetails {
+interface PersonDetails {
   Account_Number: string | null;
   Names: string;
   Addresses: string;
@@ -30,9 +30,9 @@ export interface PersonDetails {
   Post_Code: string;
 }
 
-export type ShipperDetails = PersonDetails;
+type ShipperDetails = PersonDetails;
 
-export type ConsigneeDetails = PersonDetails;
+type ConsigneeDetails = PersonDetails;
 
 export interface ReportData {
   fWB_Details: FwbDetails;
