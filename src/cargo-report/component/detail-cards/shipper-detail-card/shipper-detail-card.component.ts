@@ -14,6 +14,13 @@ import { FwbData } from '../../../model/report.model';
 export class ShipperDetailCardComponent {
   private shipperDetailsConfig = REPORT_FIELDS_CONFIG.shipperDetails;
   public shipperDetails = input<FwbData['shipper_Details']>();
+
+  /**
+   * Данные для карточки
+   * На основе shipperDetails и конфига отображения имени полей из shipperDetails
+   * строится карточка с <отображаемое имя поля> - <данные в поле>
+   * @protected
+   */
   protected cardData = computed<ListItem[]>(() => {
     const shipperDetails = this.shipperDetails();
     return [

@@ -42,6 +42,13 @@ export class ReportTableComponent {
     }
   }
 
+  /**
+   * Метод для применения сортировки в таблице
+   * Если direction = '', то в сервисе сортировка данных будет обнулена
+   * @param active - Выбранное поле для сортировки
+   * @param direction - Порядок сортировки: asc, desc, ''
+   * @protected
+   */
   protected sortChange({ active, direction }: Sort): void {
     const changedSortOrder = direction === '' ? null : direction;
     const changedSortName = active as ReportSortUrlParams['sortName'];

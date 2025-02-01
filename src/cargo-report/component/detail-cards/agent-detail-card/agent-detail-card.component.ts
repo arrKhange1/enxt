@@ -14,6 +14,13 @@ import { FwbData } from '../../../model/report.model';
 export class AgentDetailCardComponent {
   private agentDetailsConfig = REPORT_FIELDS_CONFIG.agentDetails;
   public agentDetails = input<FwbData['agent_Details']>();
+
+  /**
+   * Данные для карточки
+   * На основе agentDetails и конфига отображения имени полей из agentDetails
+   * строится карточка с <отображаемое имя поля> - <данные в поле>
+   * @protected
+   */
   protected cardData = computed<ListItem[]>(() => {
     const agentDetails = this.agentDetails();
     return [

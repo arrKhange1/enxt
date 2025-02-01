@@ -31,10 +31,21 @@ export class SavedReportsComponent {
   protected fwbDetailsConfig = REPORT_FIELDS_CONFIG.fwbDetails;
   protected dragEntered = signal<boolean>(false);
 
-  protected drop(event: CdkDragDrop<FwbData[]>) {
+  /**
+   * Если строка дропается из другого дроп листа (таблицы), то
+   * копируем данные этой строки в сохраненные
+   * @param fwbRowDropEvent - Строка из таблицы, дропнутая в сохраненные
+   * @protected
+   */
+  protected drop(fwbRowDropEvent: CdkDragDrop<FwbData[]>) {
     this.dragEntered.set(false);
-    if (event.previousContainer !== event.container) {
-      copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+    if (fwbRowDropEvent.previousContainer !== fwbRowDropEvent.container) {
+      copyArrayItem(
+        fwbRowDropEvent.previousContainer.data,
+        fwbRowDropEvent.container.data,
+        fwbRowDropEvent.previousIndex,
+        fwbRowDropEvent.currentIndex,
+      );
     }
   }
 

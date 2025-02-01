@@ -14,6 +14,13 @@ import { FwbData } from '../../../model/report.model';
 export class FwbDetailCardComponent {
   private reportFields = REPORT_FIELDS_CONFIG;
   public fwbDetails = input<FwbData['fWB_Details']>();
+
+  /**
+   * Данные для карточки
+   * На основе fwbDetails и конфига отображения имени полей из fwbDetails
+   * строится карточка с <отображаемое имя поля> - <данные в поле>
+   * @protected
+   */
   protected cardData = computed<ListItem[]>(() => {
     const fwbDetails = this.fwbDetails();
     return [

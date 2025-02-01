@@ -14,6 +14,13 @@ import { FwbData } from '../../../model/report.model';
 export class ConsigneeDetailCardComponent {
   private consigneeDetailConfig = REPORT_FIELDS_CONFIG.consigneeDetails;
   public consigneeDetails = input<FwbData['consignee_Details']>();
+
+  /**
+   * Данные для карточки
+   * На основе consigneeDetails и конфига отображения имени полей из consigneeDetails
+   * строится карточка с <отображаемое имя поля> - <данные в поле>
+   * @protected
+   */
   protected cardData = computed<ListItem[]>(() => {
     const consigneeDetails = this.consigneeDetails();
     return [
