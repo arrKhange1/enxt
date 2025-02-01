@@ -11,7 +11,7 @@ export class ParameterizedReportService {
   private urlParamsDataService = inject(ReportUrlParamsDataService);
   private reportApiService = inject(ReportApiService);
   private parameterizedReport$ = this.urlParamsDataService.reportUrlParams$.pipe(
-    debounceTimeAfter(1, 500),
+    debounceTimeAfter(1, 250),
     map((reportUrlParams) => buildUrlParams({ ...reportUrlParams })),
     switchMap((params) => this.reportApiService.getReport(params)),
     shareReplay({ bufferSize: 1, refCount: true }),

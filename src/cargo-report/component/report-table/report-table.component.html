@@ -2,8 +2,7 @@
 @let reportData = (reportData$ | async) ?? [];
 @let isReportDataLoading = isReportDataLoading$ | async;
 
-@if (!isReportDataLoading) {
-  <mat-table
+<mat-table
     #reportTableList="cdkDropList"
     class="report-table"
     matSort
@@ -14,7 +13,7 @@
     [cdkDropListData]="reportData"
   >
     <ng-container matColumnDef="prefix">
-      <mat-header-cell  *matHeaderCellDef>{{ fwbDetailsConfig.prefix }}</mat-header-cell>
+      <mat-header-cell mat-sort-header *matHeaderCellDef>{{ fwbDetailsConfig.prefix }}</mat-header-cell>
       <mat-cell *matCellDef="let fwbRow"> {{fwbRow.fWB_Details.AWB_Prefix}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="serial">
@@ -40,23 +39,22 @@
 
     <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
     <mat-row
-      class="report-table__row"
-      cdkDrag
-      [cdkDragData]="fwbRow"
-      (click)="expandRowContent(fwbRow)"
-      [attr.data-agent]="fwbRow.agent_Details"
-      *matRowDef="let fwbRow; columns: columnsToDisplay"
-      [ngTemplateOutlet]="rowContent"
-      [ngTemplateOutletContext]="{ $implicit: fwbRow }"
-    >
-      <!--
-        placeholder привязан к перетаскиваемой строке, а не к списку
-        поэтому приходится переопределить template у placeholder внутри строки
-        а менять стили placeholder уже в конкретном списке
-        -->
-      <div class="drag-placeholder report-table__row-placeholder" *cdkDragPlaceholder></div>
-    </mat-row>
-
+        class="report-table__row"
+        cdkDrag
+        [cdkDragData]="fwbRow"
+        (click)="expandRowContent(fwbRow)"
+        [attr.data-agent]="fwbRow.agent_Details"
+        *matRowDef="let fwbRow; columns: columnsToDisplay"
+        [ngTemplateOutlet]="rowContent"
+        [ngTemplateOutletContext]="{ $implicit: fwbRow }"
+      >
+        <!--
+          placeholder привязан к перетаскиваемой строке, а не к списку
+          поэтому приходится переопределить template у placeholder внутри строки
+          а менять стили placeholder уже в конкретном списке
+          -->
+        <div class="drag-placeholder report-table__row-placeholder" *cdkDragPlaceholder></div>
+      </mat-row >
 
     <ng-template #rowContent let-fwbRow>
       @if (expandedRow() === fwbRow) {
@@ -65,13 +63,14 @@
     </ng-template>
 
   </mat-table>
-} @else {
-  <section class="report-table-placeholder">
-    <mat-spinner />
-  </section>
+
+<!--
+  небольшой хак, чтобы показывать loading для контента, кроме header
+ -->
+@if (isReportDataLoading) {
+  <div class="report-table-loader">
+  </div>
 }
-
-
 
 
 

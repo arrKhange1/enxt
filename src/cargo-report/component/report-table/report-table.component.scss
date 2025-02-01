@@ -4,6 +4,11 @@
   display: block;
   flex: 1;
   overflow: auto;
+  position: relative;
+}
+
+.report-table__row {
+  position: relative;
 }
 
 .report-table__row[data-agent] {
@@ -18,4 +23,25 @@
   height: 100%;
   display: grid;
   place-items: center;
+}
+
+.report-table-loader {
+  position: absolute;
+  top: 56px;
+  height: calc(100% - 56px);
+  width: 100%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.2s infinite linear;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

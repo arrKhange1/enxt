@@ -8,7 +8,6 @@ import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
 import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
 import { DetailCardsContainerComponent } from '../../container/detail-cards-container/detail-cards-container.component';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-report-table',
@@ -21,7 +20,6 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     CdkDragPlaceholder,
     DetailCardsContainerComponent,
     AsyncPipe,
-    MatProgressSpinner,
   ],
   templateUrl: './report-table.component.html',
   styleUrl: './report-table.component.scss',
