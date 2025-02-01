@@ -28,11 +28,11 @@ import { DetailCardsContainerComponent } from '../../container/detail-cards-cont
 export class ReportTableComponent {
   private reportSortService = inject(ReportSortService);
   private reportParamsBuilderService = inject(ParameterizedReportService);
-  protected reportData$ = this.reportParamsBuilderService.getParameterizedFwbData();
   protected isReportDataLoading$ = inject(ParameterizedReportService).getReportLoadingState();
-  protected expandedRow = signal<FwbData | null>(null);
-  protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
+  protected reportData$ = this.reportParamsBuilderService.getParameterizedFwbData();
   protected reportFieldsConfig = REPORT_FIELDS_CONFIG;
+  protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
+  protected expandedRow = signal<FwbData | null>(null);
 
   protected expandRowContent(row: FwbData) {
     if (row !== this.expandedRow()) {
