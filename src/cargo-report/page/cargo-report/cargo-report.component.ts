@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { ReportTableComponent } from '../../component/report-table/report-table.component';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
-import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
+import { ParameterizedReportService } from '../../service/parameterized-report.service';
 import { ReportPaginatorComponent } from '../../component/report-paginator/report-paginator.component';
 import { ReportTimeIntervalComponent } from '../../component/report-time-interval/report-time-interval.component';
 import { ReportSortService } from '../../service/report-sort.service';
@@ -23,7 +23,7 @@ import { CollapseButtonComponent } from '../../../shared/component/collapse-butt
   ],
   templateUrl: './cargo-report.component.html',
   styleUrl: './cargo-report.component.scss',
-  providers: [ReportUrlParamsDataService, ReportUrlParamsBuilderService, ReportSortService],
+  providers: [ReportUrlParamsDataService, ParameterizedReportService, ReportSortService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CargoReportComponent {

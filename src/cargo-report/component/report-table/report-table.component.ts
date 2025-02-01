@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
-import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
+import { ParameterizedReportService } from '../../service/parameterized-report.service';
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { ReportSortService } from '../../service/report-sort.service';
 import { FwbData, ReportSortUrlParams } from '../../model/report.model';
@@ -29,9 +29,9 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 })
 export class ReportTableComponent {
   private reportSortService = inject(ReportSortService);
-  private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
+  private reportParamsBuilderService = inject(ParameterizedReportService);
   protected reportData$ = this.reportParamsBuilderService.getParameterizedFwbData();
-  protected isReportDataLoading$ = inject(ReportUrlParamsBuilderService).getReportLoadingState();
+  protected isReportDataLoading$ = inject(ParameterizedReportService).getReportLoadingState();
   protected expandedRow = signal<FwbData | null>(null);
   protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
   protected reportFieldsConfig = REPORT_FIELDS_CONFIG;

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
+import { ParameterizedReportService } from '../../service/parameterized-report.service';
 import { ReportUrlParamsDataService } from '../../store/report-url-params.data.service';
 import { AsyncPipe } from '@angular/common';
 
@@ -12,7 +12,7 @@ import { AsyncPipe } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ReportPaginatorComponent {
-  private reportUrlParamsBuilderService = inject(ReportUrlParamsBuilderService);
+  private reportUrlParamsBuilderService = inject(ParameterizedReportService);
   protected reportUrlParamsDataService = inject(ReportUrlParamsDataService);
   protected totalRecords$ = this.reportUrlParamsBuilderService.getParameterizedTotalRecords();
 
