@@ -3,7 +3,7 @@ import { MatTableModule } from '@angular/material/table';
 import { ReportUrlParamsBuilderService } from '../../service/report-url-params-builder.service';
 import { MatSortModule, Sort } from '@angular/material/sort';
 import { ReportSortService } from '../../service/report-sort.service';
-import { ReportData, ReportSortUrlParams } from '../../model/report.model';
+import { FwbData, ReportSortUrlParams } from '../../model/report.model';
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { REPORT_FIELDS_CONFIG } from '../../config/report-fields.config';
 import { CdkDrag, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
@@ -32,11 +32,11 @@ export class ReportTableComponent {
   private reportParamsBuilderService = inject(ReportUrlParamsBuilderService);
   protected reportData$ = this.reportParamsBuilderService.getParameterizedFwbData();
   protected isReportDataLoading$ = inject(ReportUrlParamsBuilderService).getReportLoadingState();
-  protected expandedRow = signal<ReportData | null>(null);
+  protected expandedRow = signal<FwbData | null>(null);
   protected columnsToDisplay = ['prefix', 'serial', 'origin', 'destination', 'act_weight', 'unit'];
   protected reportFieldsConfig = REPORT_FIELDS_CONFIG;
 
-  protected expandRowContent(row: ReportData) {
+  protected expandRowContent(row: FwbData) {
     if (row !== this.expandedRow()) {
       this.expandedRow.set(row);
     } else {

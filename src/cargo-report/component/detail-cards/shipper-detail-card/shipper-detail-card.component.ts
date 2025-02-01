@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
-import { ReportData } from '../../../model/report.model';
 import { ListItem } from '../../../../shared/model/list-item';
 import { CardWithListComponent } from '../../../../shared/component/card-with-list/card-with-list.component';
+import { FwbData } from '../../../model/report.model';
 
 @Component({
   selector: 'app-shipper-detail-card',
@@ -13,7 +13,7 @@ import { CardWithListComponent } from '../../../../shared/component/card-with-li
 })
 export class ShipperDetailCardComponent {
   private shipperDetailsConfig = REPORT_FIELDS_CONFIG.shipperDetails;
-  public shipperDetails = input<ReportData['shipper_Details']>();
+  public shipperDetails = input<FwbData['shipper_Details']>();
   protected cardData = computed<ListItem[]>(() => {
     const shipperDetails = this.shipperDetails();
     return [

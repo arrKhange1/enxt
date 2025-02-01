@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { ReportUrlParamsDataService } from '../store/report-url-params.data.service';
 import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
-import { ReportData, ReportResponse, ReportUrlParams } from '../model/report.model';
+import { FwbData, ReportResponse, ReportUrlParams } from '../model/report.model';
 import { HttpParams } from '@angular/common/http';
 import { ReportApiService } from '../../shared/api/report.api.service';
 import { debounceTimeAfter } from '../../shared/operator-function/debounceTimeAfter';
@@ -26,7 +26,7 @@ export class ReportUrlParamsBuilderService {
     return httpParams;
   }
 
-  public getParameterizedFwbData(): Observable<ReportData[]> {
+  public getParameterizedFwbData(): Observable<FwbData[]> {
     return this.parameterizedReport$.pipe(
       map((response) => response.data?.fwb_data),
       filter((data) => data !== undefined),

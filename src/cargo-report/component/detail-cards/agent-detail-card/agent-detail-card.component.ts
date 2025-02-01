@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, input, signal, OnInit, computed } from '@angular/core';
-import { ReportData } from '../../../model/report.model';
+import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
 import { ListItem } from '../../../../shared/model/list-item';
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
 import { CardWithListComponent } from '../../../../shared/component/card-with-list/card-with-list.component';
+import { FwbData } from '../../../model/report.model';
 
 @Component({
   selector: 'app-agent-detail-card',
@@ -13,7 +13,7 @@ import { CardWithListComponent } from '../../../../shared/component/card-with-li
 })
 export class AgentDetailCardComponent {
   private agentDetailsConfig = REPORT_FIELDS_CONFIG.agentDetails;
-  public agentDetails = input<ReportData['agent_Details']>();
+  public agentDetails = input<FwbData['agent_Details']>();
   protected cardData = computed<ListItem[]>(() => {
     const agentDetails = this.agentDetails();
     return [

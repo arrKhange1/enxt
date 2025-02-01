@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { REPORT_FIELDS_CONFIG } from '../../../config/report-fields.config';
-import { ReportData } from '../../../model/report.model';
 import { ListItem } from '../../../../shared/model/list-item';
 import { CardWithListComponent } from '../../../../shared/component/card-with-list/card-with-list.component';
+import { FwbData } from '../../../model/report.model';
 
 @Component({
   selector: 'app-consignee-detail-card',
@@ -13,7 +13,7 @@ import { CardWithListComponent } from '../../../../shared/component/card-with-li
 })
 export class ConsigneeDetailCardComponent {
   private consigneeDetailConfig = REPORT_FIELDS_CONFIG.consigneeDetails;
-  public consigneeDetails = input<ReportData['consignee_Details']>();
+  public consigneeDetails = input<FwbData['consignee_Details']>();
   protected cardData = computed<ListItem[]>(() => {
     const consigneeDetails = this.consigneeDetails();
     return [

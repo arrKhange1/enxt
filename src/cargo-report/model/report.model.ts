@@ -34,7 +34,7 @@ type ShipperDetails = PersonDetails;
 
 type ConsigneeDetails = PersonDetails;
 
-export interface ReportData {
+export interface FwbData {
   fWB_Details: FwbDetails;
   agent_Details: AgentDetails;
   shipper_Details: ShipperDetails;
@@ -42,7 +42,7 @@ export interface ReportData {
 }
 
 export interface ReportResponse {
-  fwb_data: ReportData[];
+  fwb_data: FwbData[];
   totalRecords: number;
 }
 
