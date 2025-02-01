@@ -40,10 +40,10 @@
     <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
     <mat-row
         class="report-table__row"
+        [class.report-table__row--agent-details-present]="fwbRow.agent_Details"
         cdkDrag
         [cdkDragData]="fwbRow"
         (click)="expandRowContent(fwbRow)"
-        [attr.data-agent]="fwbRow.agent_Details"
         *matRowDef="let fwbRow; columns: columnsToDisplay"
         [ngTemplateOutlet]="rowContent"
         [ngTemplateOutletContext]="{ $implicit: fwbRow }"

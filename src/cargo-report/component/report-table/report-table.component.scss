@@ -9,10 +9,10 @@
 
 .report-table__row {
   position: relative;
-}
 
-.report-table__row[data-agent] {
-  background-color: var(--mat-sys-inverse-primary)
+  &--agent-details-present {
+    background-color: var(--mat-sys-inverse-primary)
+  }
 }
 
 .report-table__row-placeholder {
