@@ -1,11 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { ReportUrlParamsDataService } from '../store/report-url-params.data.service';
-import { filter, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
+import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
 import { ReportData, ReportResponse, ReportUrlParams } from '../model/report.model';
 import { HttpParams } from '@angular/common/http';
 import { ReportApiService } from '../../shared/api/report.api.service';
 import { debounceTimeAfter } from '../../shared/operator-function/debounceTimeAfter';
-import { LoadedValue } from '../../shared/helper/response';
 
 @Injectable()
 export class ReportUrlParamsBuilderService {
