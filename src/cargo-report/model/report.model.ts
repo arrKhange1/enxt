@@ -34,31 +34,33 @@ type ShipperDetails = PersonDetails;
 
 type ConsigneeDetails = PersonDetails;
 
-export interface FwbData {
+interface FwbData {
   fWB_Details: FwbDetails;
   agent_Details: AgentDetails;
   shipper_Details: ShipperDetails;
   consignee_Details: ConsigneeDetails;
 }
 
-export interface ReportResponse {
+interface FwbReport {
   fwb_data: FwbData[];
   totalRecords: number;
 }
 
-export interface ReportPageUrlParams {
+interface ReportPageUrlParams {
   pageNumber: number;
   pageSize: number;
 }
 
-export interface ReportTimeUrlParams {
+interface ReportTimeUrlParams {
   from: string | null;
   until: string | null;
 }
 
-export interface ReportSortUrlParams {
+interface ReportSortUrlParams {
   sortOrder: 'asc' | 'desc' | null;
   sortName: 'prefix' | 'serial' | 'origin' | 'destination' | 'act_weight' | 'unit' | null;
 }
 
-export type ReportUrlParams = ReportPageUrlParams & ReportTimeUrlParams & ReportSortUrlParams;
+type ReportUrlParams = ReportPageUrlParams & ReportTimeUrlParams & ReportSortUrlParams;
+
+export type { FwbData, FwbReport, ReportSortUrlParams, ReportUrlParams };
