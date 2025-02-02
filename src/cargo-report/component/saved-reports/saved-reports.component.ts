@@ -34,7 +34,7 @@ export class SavedReportsComponent {
   /**
    * Если строка дропается из другого дроп листа (таблицы), то
    * копируем данные этой строки в сохраненные
-   * @param fwbRowDropEvent - Строка из таблицы, дропнутая в сохраненные
+   * @param fwbRowDropEvent - Событие дропа строки в сохраненные
    * @protected
    */
   protected drop(fwbRowDropEvent: CdkDragDrop<FwbData[]>) {
